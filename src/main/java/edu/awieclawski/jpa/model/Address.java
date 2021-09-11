@@ -155,38 +155,38 @@ public class Address extends BaseEntity implements Serializable, AddressLabels {
 
 	// Labels
 	@Override
-	public String getCountryLabel() {
-		return "Country";
+	public String getAddressNameLabel() {
+		return addressNameLabel;
 	}
 
 	@Override
-	public String getAddressNameLabel() {
-		return "Address name";
+	public String getCountryLabel() {
+		return countryLabel;
 	}
 
 	@Override
 	public String getCityLabel() {
-		return "City";
+		return cityLabel;
 	}
 
 	@Override
 	public String getPostalCodeLabel() {
-		return "Postal code";
+		return postalCodeLabel;
 	}
 
 	@Override
 	public String getStreetNameLabel() {
-		return "Street name";
+		return streetNameLabel;
 	}
 
 	@Override
 	public String getStreetNumberLabel() {
-		return "Street number";
+		return streetNumberLabel;
 	}
 
 	@Override
 	public String getFlatNumberLabel() {
-		return "Apartment number";
+		return flatNumberLabel;
 	}
 
 }

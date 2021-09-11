@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.awieclawski.jpa.adt.AddressRepository;
 import edu.awieclawski.jpa.base.BaseEntity;
@@ -47,16 +46,16 @@ public class InputDataController {
 	}
 
 	@RequestMapping(value = "/upaddress", method = RequestMethod.POST, params = "submit")
-	public String submitEntity(@Valid @ModelAttribute("entity") final Address address, BindingResult result,
-			final RedirectAttributes redirectAttributes, Model model) {
+	public String submitEntity(@Valid @ModelAttribute("entity") final Address postedEntity, BindingResult result,
+			Model model) {
 		if (result.hasErrors()) {
-			LOGGER.log(Level.SEVERE, "Error result " + address.getEntityHeaderName());
+			LOGGER.log(Level.SEVERE, "Error result " + postedEntity.getEntityHeaderName());
 			return "/upform";
 		}
 
-		model.addAttribute("sessionentity", address);
-		addressRepo.save(address);
-		return "redirect:/displayaddress";
+		model.addAttribute("sessionentity", postedEntity);
+		addressRepo.save(postedEntity);
+		return "redirect:/displayentity";
 	}
 
 	@RequestMapping(value = "/upaddress", method = RequestMethod.POST, params = "reset")
